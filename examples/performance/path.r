@@ -5,13 +5,16 @@
  
   library(dllmsmc); require(mgcv); require(smcUtils)
   
- 
+#Note that in order to run this code we need to create a local directory to salve and read
+#the simulated objects (see below when it is necessary). The outputs using 
+#the dllmsmc can consume large memory for #large datasets. 
+
   #****************** Simulating the path functionals *****************************#
 
   prin <- FALSE
   #Note: This script is time-consuming!!
 
-  MC.runs = 50
+  MC.runs = 4
   sigma.x <- 1
   sigma.y <- 1
   phi <- 0.9
@@ -105,8 +108,11 @@
     
 #################################################################
 ##                                                              ##
-##                    MCMC - kalman smoothing                   ##
+##                    kalman smoothing / MCMC                   ##
 #################################################################
+
+# If we have a Linear Gaussian state space model then we use the kalman recursions
+
   kalman = TRUE
   if(kalman)
 	{
